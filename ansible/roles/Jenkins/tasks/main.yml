@@ -1,0 +1,13 @@
+- name: Build the Jenkins container
+  docker-image:
+    name: jenkins
+    path: ./files
+    tag: local
+
+- name: Run the Jenkins container
+  docker-container:
+    name: jenkins
+    tag: local
+    state: run
+    published_ports: 8080:8080, 50000:50000
+    volumes: jenkins:/var/jenkins_home
